@@ -21,5 +21,6 @@ RUN curl -sSLf ${NODE_DOWNLOAD_URL} -o ${NODE_TMP_FILE} && \
     curl -sSLf ${GO_DOWNLOAD_URL} -o ${GO_TMP_FILE}  && \
     tar -C /usr/local -xzf ${GO_TMP_FILE} && \
     rm -rf ${GO_TMP_FILE}
+RUN npm i -g yarn
 
 RUN echo "alias ll='ls -ahl --color'" >> /etc/bash.bashrc
