@@ -1,0 +1,53 @@
+{
+    "id": "mm-plugin-header-btns",
+    "name": "Channel Header Buttons",
+    "description": "Add some buttons to the channel header.",
+    "homepage_url": "https://github.com/ecator/mm-plugin-header-btns",
+    "support_url": "https://github.com/ecator/mm-plugin-header-btns/issues",
+    "release_notes_url": "https://github.com/ecator/mm-plugin-header-btns/releases",
+    "icon_path": "assets/cat.svg",
+    "version": "0.1.0",
+    "min_server_version": "5.37.0",
+    "server": {
+        "executables": {
+            "linux-amd64": "server/dist/plugin-linux-amd64",
+            "linux-arm64": "server/dist/plugin-linux-arm64",
+            "darwin-amd64": "server/dist/plugin-darwin-amd64",
+            "darwin-arm64": "server/dist/plugin-darwin-arm64",
+            "windows-amd64": "server/dist/plugin-windows-amd64.exe"
+        }
+    },
+    "webapp": {
+        "bundle_path": "webapp/dist/main.js"
+    },
+    "settings_schema": {
+        "header": "Channel Header Buttons Setting",
+        "footer": "",
+        "settings": [
+            {
+                "key": "urls",
+                "display_name": "The urls of target",
+                "type": "longtext",
+                "help_text": "The urls that will be jumped to. If there are more than 1 url you can split them by newline.",
+                "placeholder": "",
+                "default": "https://github.com/ecator/mm-plugin-header-btns"
+            },
+            {
+                "key": "icons",
+                "display_name": "The icons of button",
+                "type": "longtext",
+                "help_text": "The icon urls that will displayed. If there are more than 1 icon you can split them by newline.",
+                "placeholder": "",
+                "default": "https://github.com/ecator/mm-plugin-header-btns/raw/main/assets/cat.svg"
+            },
+            {
+                "key": "titles",
+                "display_name": "The titles of button",
+                "type": "longtext",
+                "help_text": "The titles that will displayed. If there are more than 1 title you can split them by newline.",
+                "placeholder": "",
+                "default": "mm-plugin-header-btns"
+            }
+        ]
+    }
+}

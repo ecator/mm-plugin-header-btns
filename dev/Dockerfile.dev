@@ -1,0 +1,25 @@
+FROM docker/dev-environments-default:stable-1
+
+ENV NODE_VERSION=v14.21.2
+ENV NODE_DISTRO=linux-x64
+ENV NODE_DOWNLOAD_URL=https://nodejs.org/download/release/${NODE_VERSION}/node-${NODE_VERSION}-${NODE_DISTRO}.tar.xz
+ENV NODE_TMP_FILE=/tmp/nodejs.tar.xz
+ENV NODE_INSTALL_DIR=/usr/local/lib/nodejs
+ENV GO_VERSION=1.19.5
+ENV GO_DOWNLOAD_URL=https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
+ENV GO_TMP_FILE=/tmp/go.tar.gz
+ENV LANG=C.UTF-8
+ENV PATH=$PATH:$NODE_INSTALL_DIR/node-$NODE_VERSION-$NODE_DISTRO/bin:/usr/local/go/bin:~/go/bin
+
+RUN apt update && \
+    apt install -y jq wget xz-utils gcc make && \
+    apt clean
+RUN curl -sSLf ${NODE_DOWNLOAD_URL} -o ${NODE_TMP_FILE} && \ 
+    mkdir -p ${NODE_INSTALL_DIR} && \
+    tar -xJf ${NODE_TMP_FILE} -C ${NODE_INSTALL_DIR} && \
+    rm -rf ${NODE_TMP_FILE} && \
+    curl -sSLf ${GO_DOWNLOAD_URL} -o ${GO_TMP_FILE}  && \
+    tar -C /usr/local -xzf ${GO_TMP_FILE} && \
+    rm -rf ${GO_TMP_FILE}
+
+RUN echo "alias ll='ls -ahl --color'" >> /etc/bash.bashrc
