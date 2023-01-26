@@ -44,7 +44,7 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
       - name: Create release
-        uses: docker://antonyurchenko/git-release:v3
+        uses: docker://antonyurchenko/git-release::latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DRAFT_RELEASE: "false"
